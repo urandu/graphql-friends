@@ -1,6 +1,5 @@
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
-import schema from './schema';
 import path from 'path';
 import webpack from 'webpack';
 import WebPackDevServer from 'webpack-dev-server';
