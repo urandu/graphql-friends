@@ -8,7 +8,7 @@ import {
     connectionArgs,
     connectionDefinitions,
     connectionFromArray,
-    fromGlobalId,
+    fromGlobalId, globalIdField,
     nodeDefinitions,
     toGlobalId,
 } from 'graphql-relay';
@@ -59,7 +59,7 @@ const GraphQLUser = new GraphQLObjectType({
 
 
 const GraphQLFriend = new GraphQLObjectType({
-    name: 'User',
+    name: 'Friend',
     fields: () => ({
         id: globalIdField('Friend'),
         firstName: {
