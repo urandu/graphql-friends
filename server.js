@@ -9,20 +9,41 @@ app.get('/', (req, res) => {
     res.send("GraphQL and Relay modern is kinda cool!")
 });
 
-const root = {friend: (args) => {
-    return{
-        "id": 12,
-        "firstName": "bil",
-        "lastName": "nam",
-        "gender": "Male",
-        "language": "English",
-        "email": "bil@bil.bil",
-        "IDTyped": args.id,
+class Friend{
+    constructor(id, {firstName, lastName, gender, language, email}){
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName =lastName ;
+        this.gender = gender;
+        this.language = language;
+        this.email = email;
     }
-    }}
+}
+
+const friendDatabase = {};
+
+
+
+const global = {
+    getFriend: ({id}) => {
+        return new Friend(id, friendDatabase[id]);
+    },
+
+    createFriend: ({input}) => {
+        let id = require('crypto').randomBytes(10).toString('hex');
+        friendDatabase[id] = input;
+        return new Friend(id, input)
+    },
+
+    updateFriend: ({id, input}) => {
+        friendDatabase[id] = input;
+        return new Friend(id, input)
+    }
+
+};
 
 app.use('/graphql', graphqlHTTP({
-    schema, rootValue: root,
+    schema, rootValue: global,
     graphiql: true,
 }))
 
