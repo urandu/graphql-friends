@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {createFragment, graphql} from 'react-relay'
+import React, {Component} from 'react';
+import {createFragmentContainer, graphql} from 'react-relay';
 
 class Friend extends Component{
     render(){

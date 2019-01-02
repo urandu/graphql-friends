@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {createFragment, graphql} from 'react-relay'
+import {createFragmentContainer, graphql} from 'react-relay'
 import Friend from './Friend'
 
 class FriendsList extends Component{

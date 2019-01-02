@@ -42,7 +42,6 @@ ReactDOM.render(
                  }
             }
         `}
-
         variables={{}}
         render = {({error, props}) => {
             if(props){

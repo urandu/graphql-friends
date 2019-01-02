@@ -39,12 +39,10 @@ const compiler = webpack({
 
 const app = new WebPackDevServer(compiler, {
     contentBase: '/public/',
-    proxy: {'/graphql': `http://localhost:${APP_PORT}`},
+    proxy: {'/graphql': `http://localhost:${GRAPHQL_PORT}`},
     publicPath: '/src/',
     stats: {colors: true},
 });
 
 app.use('/', express.static(path.resolve(__dirname, 'public')));
-app.listen(APP_PORT, ()=>{
-    console.log(`App server on localhost:${APP_PORT}`)
-});
+app.listen(APP_PORT, ()=>console.log(`App server on localhost:${APP_PORT}`));
